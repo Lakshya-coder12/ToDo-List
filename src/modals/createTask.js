@@ -4,6 +4,16 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 const CreateTaskPopUp = ({ modal, toggle }) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
+    
+    const handleChange = (event) => {
+          const {name, value} = event.target;
+          if(name === "taskName"){
+              setTaskName(value);
+          }else{
+              setDescription(value);
+          }
+    }
+
     return (
         <Modal isOpen={modal} toggle={toggle}>
             <ModalHeader toggle={toggle}>Create Task</ModalHeader>
@@ -11,11 +21,11 @@ const CreateTaskPopUp = ({ modal, toggle }) => {
                 <form>
                      <div className = "form-group">
                          <label>Task Name</label>
-                        <input type = "text" className = "form-control" value = {taskName}/>
+                        <input type = "text" className = "form-control" value = {taskName} onChange = {handleChange} name = "taskName"/>
                      </div>
                      <div className ="form-group">
                          <label>Description</label>
-                         <textarea rows = "5" className = "form-control" value = {description}></textarea>
+                         <textarea rows = "5" className = "form-control" value = {description} onChange = {handleChange} name = "description"></textarea>
                      </div>
                 </form>
             </ModalBody>
