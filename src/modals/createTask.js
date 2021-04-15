@@ -7,7 +7,14 @@ const createTask = ({ modal, toggle }) => {
             <ModalHeader toggle={toggle}>Create Task</ModalHeader>
             <ModalBody>
                 <form>
-
+                     <div className = "form-group">
+                         <label>Task Name</label>
+                        <input type = "text" className = "form-control"/>
+                     </div>
+                     <div className ="form-group">
+                         <label>Description</label>
+                         <textarea rows = "5" className = "form-control"></textarea>
+                     </div>
                 </form>
             </ModalBody>
             <ModalFooter>
