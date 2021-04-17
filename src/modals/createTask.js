@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const CreateTaskPopUp = ({ modal, toggle }) => {
+const CreateTaskPopUp = ({ modal, toggle, save}) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
     
@@ -12,6 +12,13 @@ const CreateTaskPopUp = ({ modal, toggle }) => {
           }else{
               setDescription(value);
           }
+    }
+
+    const handleSave = () => {
+        let taskObj = {};
+        taskObj["Name"] = taskName;
+        taskObj["Description"] = description;
+        save(taskObj);
     }
 
     return (
@@ -30,7 +37,7 @@ const CreateTaskPopUp = ({ modal, toggle }) => {
                 </form>
             </ModalBody>
             <ModalFooter>
-                <Button color="primary" onClick={toggle}>Create</Button>{' '}
+                <Button color="primary" onClick={handleSave}>Create</Button>{' '}
                 <Button color="secondary" onClick={toggle}>Cancel</Button>
             </ModalFooter>
         </Modal>
